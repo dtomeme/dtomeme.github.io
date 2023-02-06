@@ -1,84 +1,44 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <style>
-      .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 50px;
-      }
-      label {
-        font-size: 18px;
-        margin-top: 20px;
-      }
-      input[type="text"],
-      input[type="radio"] {
-        font-size: 18px;
-        padding: 10px;
-        margin-top: 10px;
-      }
-      input[type="submit"] {
-        background-color: blue;
-        color: white;
-        border: none;
-        border-radius: 10px;
-        padding: 10px 20px;
-        font-size: 18px;
-        cursor: pointer;
-        margin-top: 20px;
-      }
-      .question {
-        font-size: 24px;
-        margin-top: 50px;
-      }
-      .answers {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-      }
-      .answer {
-        font-size: 18px;
-        margin-top: 10px;
-      }
-    </style>
+    <title>Quiz Maker</title>
   </head>
   <body>
-    <!-- Index Page -->
-    <div class="container" id="indexContainer">
-      <form id="questionForm">
-        <label for="questionInput">Question:</label>
-        <input type="text" id="questionInput" name="question">
-        <label for="answer1Input">Answer 1:</label>
-        <input type="text" id="answer1Input" name="answer1">
-        <input type="radio" name="correctAnswer" value="answer1">
-        <label for="answer2Input">Answer 2:</label>
-        <input type="text" id="answer2Input" name="answer2">
-        <input type="radio" name="correctAnswer" value="answer2">
-        <label for="answer3Input">Answer 3:</label>
-        <input type="text" id="answer3Input" name="answer3">
-        <input type="radio" name="correctAnswer" value="answer3">
-        <input type="submit" value="Submit">
-      </form>
-    </div>
-
-    <!-- Quiz Page -->
-    <div class="container" id="quizContainer" style="display: none;">
-      <div class="question"></div>
-      <div class="answers">
-        <div class="answer"></div>
-        <div class="answer"></div>
-        <div class="answer"></div>
-      </div>
-    </div>
-
+    <h1>Quiz Maker</h1>
+    <form id="quiz-form">
+      <label for="question">Question:</label>
+      <input type="text" id="question" name="question">
+      <br><br>
+      <label for="answer1">Answer 1:</label>
+      <input type="text" id="answer1" name="answer1">
+      <br><br>
+      <label for="answer2">Answer 2:</label>
+      <input type="text" id="answer2" name="answer2">
+      <br><br>
+      <label for="answer3">Answer 3:</label>
+      <input type="text" id="answer3" name="answer3">
+      <br><br>
+      <label for="correctAnswer">Correct Answer (1, 2 or 3):</label>
+      <input type="number" id="correctAnswer" name="correctAnswer" min="1" max="3">
+      <br><br>
+      <button type="submit">Create Quiz</button>
+    </form>
     <script>
-      // Get the elements
-      let indexContainer = document.querySelector("#indexContainer");
-      let quizContainer = document.querySelector("#quizContainer");
-      let questionForm = document.querySelector("#questionForm");
-      let questionInput = document.querySelector("#questionInput");
-      let answer1Input = document.querySelector("#answer1Input");
+      const form = document.getElementById("quiz-form");
+      form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        const question = form.elements.question.value;
+        const answer1 = form.elements.answer1.value;
+        const answer2 = form.elements.answer2.value;
+        const answer3 = form.elements.answer3.value;
+        const correctAnswer = form.elements.correctAnswer.value;
+        localStorage.setItem("question", question);
+        localStorage.setItem("answer1", answer1);
+        localStorage.setItem("answer2", answer2);
+        localStorage.setItem("answer3", answer3);
+        localStorage.setItem("correctAnswer", correctAnswer);
+        window.location.href = "quiz.html";
+      });
     </script>
   </body>
 </html>
