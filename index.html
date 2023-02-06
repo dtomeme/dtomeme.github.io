@@ -26,6 +26,18 @@
         padding: 20px;
         display: none;
       }
+      button {
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-size: 18px;
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        cursor: pointer;
+      }
     </style>
   </head>
   <body>
@@ -38,13 +50,15 @@
         feugiat, elit justo tempor elit, non convallis mi mi et ante. 
         Aliquam id lacus semper, accumsan orci in, fringilla augue.
       </p>
+      <button id="openBtn">Open</button>
     </div>
 
     <script>
-      let letter = document.querySelector(".letter");
-      letter.addEventListener("click", function() {
+      let btn = document.querySelector("#openBtn");
+      btn.addEventListener("click", function() {
         let para = document.querySelector("p");
         para.style.display = "block";
+        btn.style.display = "none";
       });
     </script>
   </body>
