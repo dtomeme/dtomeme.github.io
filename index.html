@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #flower-image {
+        width: 400px;
+        height: 400px;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Random Flower Generator</h1>
+    <img id="flower-image" />
+    <script>
+      const flowers = [
+        'https://image1.com',
+        'https://image2.com',
+        'https://image3.com',
+        'https://image4.com',
+        'https://image5.com',
+      ];
+
+      const randomIndex = Math.floor(Math.random() * flowers.length);
+      const randomFlower = flowers[randomIndex];
+
+      const flowerImage = document.getElementById('flower-image');
+      flowerImage.src = randomFlower;
+    </script>
+  </body>
+</html>
