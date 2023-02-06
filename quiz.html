@@ -5,16 +5,23 @@
   </head>
   <body>
     <h1>Quiz</h1>
-    <form id="quiz">
-      <p id="question"></p>
-      <input type="radio" id="answer1" name="answer" value="1">
-      <label for="answer1" id="label1"></label>
-      <br><br>
-      <input type="radio" id="answer2" name="answer" value="2">
-      <label for="answer2" id="label2"></label>
-      <br><br>
-      <input type="radio" id="answer3" name="answer" value="3">
-      <label for="answer3" id="label3"></label>
-      <br><br>
+    <form id="quiz-form">
+      <div id="question"></div>
+      <div>
+        <input type="radio" id="answer1" name="answer">
+        <label for="answer1" id="answer1-label"></label>
+      </div>
+      <div>
+        <input type="radio" id="answer2" name="answer">
+        <label for="answer2" id="answer2-label"></label>
+      </div>
+      <div>
+        <input type="radio" id="answer3" name="answer">
+        <label for="answer3" id="answer3-label"></label>
+      </div>
       <button type="submit">Submit</button>
     </form>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="quiz.js"></script>
+  </body>
+</html>
