@@ -1,65 +1,84 @@
 <html>
   <head>
     <style>
-      .letter {
-        width: 500px;
-        height: 300px;
-        background-color: pink;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border: 2px solid red;
-        border-radius: 10px;
-        overflow: hidden;
-      }
-      .letter h1 {
-        font-size: 36px;
-        color: red;
-        text-align: center;
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin-top: 50px;
       }
-      .letter p {
+      label {
         font-size: 18px;
-        color: black;
-        text-align: justify;
-        padding: 20px;
-        display: none;
+        margin-top: 20px;
       }
-      button {
-        background-color: red;
+      input[type="text"],
+      input[type="radio"] {
+        font-size: 18px;
+        padding: 10px;
+        margin-top: 10px;
+      }
+      input[type="submit"] {
+        background-color: blue;
         color: white;
         border: none;
         border-radius: 10px;
         padding: 10px 20px;
         font-size: 18px;
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
         cursor: pointer;
+        margin-top: 20px;
+      }
+      .question {
+        font-size: 24px;
+        margin-top: 50px;
+      }
+      .answers {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+      .answer {
+        font-size: 18px;
+        margin-top: 10px;
       }
     </style>
   </head>
   <body>
-    <div class="letter">
-      <h1>My Dearest,</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam 
-        vestibulum, lacus eu pharetra dictum, neque dui pretium dui, id 
-        congue sapien est euismod enim. Nunc euismod, metus et tristique 
-        feugiat, elit justo tempor elit, non convallis mi mi et ante. 
-        Aliquam id lacus semper, accumsan orci in, fringilla augue.
-      </p>
-      <button id="openBtn">Open</button>
+    <!-- Index Page -->
+    <div class="container" id="indexContainer">
+      <form id="questionForm">
+        <label for="questionInput">Question:</label>
+        <input type="text" id="questionInput" name="question">
+        <label for="answer1Input">Answer 1:</label>
+        <input type="text" id="answer1Input" name="answer1">
+        <input type="radio" name="correctAnswer" value="answer1">
+        <label for="answer2Input">Answer 2:</label>
+        <input type="text" id="answer2Input" name="answer2">
+        <input type="radio" name="correctAnswer" value="answer2">
+        <label for="answer3Input">Answer 3:</label>
+        <input type="text" id="answer3Input" name="answer3">
+        <input type="radio" name="correctAnswer" value="answer3">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <!-- Quiz Page -->
+    <div class="container" id="quizContainer" style="display: none;">
+      <div class="question"></div>
+      <div class="answers">
+        <div class="answer"></div>
+        <div class="answer"></div>
+        <div class="answer"></div>
+      </div>
     </div>
 
     <script>
-      let btn = document.querySelector("#openBtn");
-      btn.addEventListener("click", function() {
-        let para = document.querySelector("p");
-        para.style.display = "block";
-        btn.style.display = "none";
-      });
+      // Get the elements
+      let indexContainer = document.querySelector("#indexContainer");
+      let quizContainer = document.querySelector("#quizContainer");
+      let questionForm = document.querySelector("#questionForm");
+      let questionInput = document.querySelector("#questionInput");
+      let answer1Input = document.querySelector("#answer1Input");
     </script>
   </body>
 </html>
