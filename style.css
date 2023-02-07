@@ -1,6 +1,6 @@
 @font-face { font-family: LoveLady; src: url('LoveLadyPersonalUse.ttf'); }
 body {
-  font-family:LoveLady;
+  font-family:gothic;
   width: 100%;
   overflow: hidden;
   background-image: linear-gradient(#ff0000, #fff 60%, pink 80%);
