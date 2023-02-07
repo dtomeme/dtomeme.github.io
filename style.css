@@ -1,4 +1,8 @@
 @font-face { font-family: LoveLady; src: url('https://github.com/dtomeme/dtomeme.github.io/blob/main/LoveLadyPersonalUse.ttf'); }
+* {
+  font-family:LoveLady;
+}
+
 body {
   font-family:LoveLady;
   width: 100%;
