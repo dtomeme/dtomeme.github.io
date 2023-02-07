@@ -1,98 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Quiz</title>
+<!DOCTYPE html> 
+<html> 
+	<head> 
+    <title>Google Spreadsheet Javascript</title> 
+    <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+    <script type="text/javascript" src="google-spreadsheet.js"></script>
     <style>
-      body {
-        background-color: pink;
-        color: red;
-        font-family: Arial, sans-serif;
-        text-align: center;
+      body{
+        background-color: black;
+        color: green;
+        font-size: .8em;
+        font-family: sans-serif;
       }
-      
-      h1 {
-        font-size: 36px;
-        margin: 40px 0 20px 0;
-      }
-      
-      form {
-        background-color: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-        display: inline-block;
-      }
-      
-      div + div {
-        margin-top: 20px;
-      }
-      
-      input[type="radio"] {
-        vertical-align: middle;
-      }
-      
-      label {
-        font-size: 18px;
-        margin-left: 10px;
-      }
-      
-      button[type="submit"] {
-        background-color: red;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 20px;
-        border: none;
-        font-size: 18px;
-        cursor: pointer;
-        margin-top: 20px;
+      h1,a{ color: yellow}
+      input{
+        font-size: .8em;
+        background-color: black;
+        color:white;
       }
     </style>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Happy Valentine's Day!</title>
-    
-  </head>
-  <body>
-    <main class="container">
-      <div class="heart-1 heart"></div>
-      <div class="heart-2 heart"></div>
-      <div class="heart-3 heart"></div>
-      <div class="heart-4 heart"></div>
-      <div class="heart-5 heart"></div>
-      <div class="heart-6 heart"></div>
-      <div class="heart-7 heart"></div>
-    </main>
-    <h1>Quiz Creator</h1>
-    <form id="quiz-form" style="font-family:helvetica">
-      <div>
-        <label for="question">Question:</label>
-        <input type="text" id="question" name="question">
-      </div>
-      <div>
-        <label for="answer1">Answer 1:</label>
-        <input type="text" id="answer1" name="answer1">
-      </div>
-      <div>
-        <label for="answer2">Answer 2:</label>
-        <input type="text" id="answer2" name="answer2">
-      </div>
-      <div>
-        <label for="answer3">Answer 3:</label>
-        <input type="text" id="answer3" name="answer3">
-      </div>
-      <div>
-        <label for="correct-answer">Correct Answer:</label>
-        <select id="correct-answer" name="correct-answer">
-          <option value="1">Answer 1</option>
-          <option value="2">Answer 2</option>
-          <option value="3">Answer 3</option>
-        </select>
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-    <script src="https://apis.google.com/js/api.js"></script>
-    <script src="index.js"></script>
+  </head> 
+  <body> 
+    <h1>Google Spreadsheet Javascript</h1>
+    Here is the most basic usage:
+    <pre id='code'></pre>
+    And here are the results:
+    <pre id='results'></pre>
+    <div id='links'>
+      Github URL: <a href='https://github.com/mikeymckay/google-spreadsheet-javascript'>https://github.com/mikeymckay/google-spreadsheet-javascript</a><br/>
+      Source URL for above spreadsheet data: <span id='spreadsheet_url'></span><br/>
+      Try your own spreadsheet (needs to be <a href='https://docs.google.com/support/bin/answer.py?hl=en&answer=47134'>published</a>):<br/>
+      <input style='width:700px' name='url' type='text'></input>
+      <input onclick='document.location = document.location.pathname + "?url="+$("input[name]").val()' type='submit'></input>
+    </div>
+    <iframe width='500' height='300' frameborder='0' ></iframe>
+    <script>
+    </script>
+    <script id='script'>
+      localStorage.clear();
+      var sample_url = "https://docs.google.com/spreadsheets/d/1elHcggZdAvt_yYoeyI989BWQdR6CM7TJoObJpL90Qvw/edit?usp=sharing";
+      var url_parameter = document.location.search.split(/\?url=/)[1]
+      var url = url_parameter || sample_url;
+      var googleSpreadsheet = new GoogleSpreadsheet();
+      googleSpreadsheet.url(url);
+      googleSpreadsheet.load(function(result) {
+        $('#results').html(JSON.stringify(result).replace(/,/g,",\n"));
+      });
+    </script>
+    <script>
+      $('#code').html($('#script').html())
+      $('#spreadsheet_url').html("<a href='"+url+"'>"+url+"</a>");
+      $('#iframe').attr("src",url);
+      $('input[name]').val(url);
+      if (url != sample_url){
+        $("div#links").append("<br/><a href='"+document.location.pathname+"'>Original Sample Spreadsheet</a>")
+      }
+    </script>
   </body>
 </html>
+
