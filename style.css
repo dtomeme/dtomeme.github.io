@@ -1,10 +1,5 @@
-@font-face { font-family: LoveLady; src: url('https://github.com/dtomeme/dtomeme.github.io/blob/main/LoveLadyPersonalUse.ttf'); }
-* {
-  font-family:LoveLady;
-}
-
 body {
-  font-family:LoveLady;
+  font-family: Arial, sans-serif;
   width: 100%;
   overflow: hidden;
   background-image: linear-gradient(#ff0000, #fff 60%, pink 80%);
