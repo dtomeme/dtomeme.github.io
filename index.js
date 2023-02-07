@@ -14,7 +14,7 @@ quizForm.addEventListener("submit", event => {
   const correctAnswer = correctAnswerInput.value;
 
   gapi.client.init({
-    apiKey: "API_KEY",
+    apiKey: "AIzaSyAphI5rjr4HOM7c3tYupq2k4fpvktBdWtU",
     discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
   }).then(() => {
     gapi.client.sheets.spreadsheets.values.append({
