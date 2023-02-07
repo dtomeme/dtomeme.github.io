@@ -1,4 +1,5 @@
 body {
+  font-family:helvetica;
   width: 100%;
   overflow: hidden;
   background-image: linear-gradient(#ff0000, #fff 60%, pink 80%);
