@@ -18,7 +18,7 @@ quizForm.addEventListener("submit", event => {
     discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
   }).then(() => {
     gapi.client.sheets.spreadsheets.values.append({
-      spreadsheetId: "SPREADSHEET_ID",
+      spreadsheetId: "18JThLkbC4VrpeL-oBk28YZsHyshnpk-t610fo6n4oyI",
       range: "Sheet1",
       valueInputOption: "RAW",
       insertDataOption: "INSERT_ROWS",
