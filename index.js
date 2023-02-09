@@ -17,10 +17,22 @@ var parseData = function(data){
   renderData(gson);
 };
 
+const extractValue = (string, key) => {
+  const regex = new RegExp(`${key}:\\n([\\s\\S]+?)\\n`, "i");
+  const match = string.match(regex);
+  return match ? match[1].trim() : null;
+};
+
 var renderData = function(gson) {
   for(var i=0; i<gson.length; i++) {
     var row_data = gson[i];
-    var row_html = `<div><span>${row_data["formResponse"]}</span></div>`;
-console.log(row_html);
+    var row_html = row_data["formResponse"];
+    const path = extractValue(string, "path");
+    const question = extractValue(string, "question");
+    const answer1 = extractValue(string, "answer1");
+
+    console.log("path:", path);
+    console.log("question:", question);
+    console.log("answer1:", answer1);
   }
 }
