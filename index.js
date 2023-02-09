@@ -27,9 +27,9 @@ var renderData = function(gson) {
   for(var i=0; i<gson.length; i++) {
     var row_data = gson[i];
     var row_html = row_data["formResponse"];
-    const path = extractValue(string, "path");
-    const question = extractValue(string, "question");
-    const answer1 = extractValue(string, "answer1");
+    const path = extractValue(row_html, "path");
+    const question = extractValue(row_html, "question");
+    const answer1 = extractValue(row_html, "answer1");
 
     console.log("path:", path);
     console.log("question:", question);
