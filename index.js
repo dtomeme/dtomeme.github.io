@@ -5,7 +5,6 @@ document.body.appendChild(papaparse_script)
 
 //fetch the data
 var sheet_csv = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSehJHcQEsfNWKn8_SumvGZ-Brnmlyw56iM6koUWFlrbcIH2To5gOTny43TQzbBW0rs78SYFd_8WzAb/pub?output=csv';
-
 fetch(sheet_csv)
   .then(function(response){return response.text();})
   .then(function(data){
