@@ -21,7 +21,7 @@ var parseData = function(data){
 var renderData = function(gson) {
   for(var i=0; i<gson.length; i++) {
     var row_data = gson[i];
-    var row_html = `<div class="row"><div class="left"><div  style="width:${row_data["formResponse"]}%"></div></div></div>`;
+    var row_html = `<div><span>${row_data["formResponse"]}</span></div>`;
 console.log(row_html);
   }
 }
