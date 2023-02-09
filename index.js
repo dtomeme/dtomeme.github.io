@@ -1,32 +1,27 @@
-const quizForm = document.getElementById("quiz-form");
-const questionInput = document.getElementById("question");
-const answer1Input = document.getElementById("answer1");
-const answer2Input = document.getElementById("answer2");
-const answer3Input = document.getElementById("answer3");
-const correctAnswerInput = document.getElementById("correct-answer");
+var papaparse_script = document.createElement("script");
+papaparse_script.type = "text/javascript";
+papaparse_script.src = "https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js";
+document.body.appendChild(papaparse_script)
 
-quizForm.addEventListener("submit", event => {
-  event.preventDefault();
-  const question = questionInput.value;
-  const answer1 = answer1Input.value;
-  const answer2 = answer2Input.value;
-  const answer3 = answer3Input.value;
-  const correctAnswer = correctAnswerInput.value;
+//fetch the data
+var sheet_csv = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSehJHcQEsfNWKn8_SumvGZ-Brnmlyw56iM6koUWFlrbcIH2To5gOTny43TQzbBW0rs78SYFd_8WzAb/pub?output=csv';
 
-  gapi.client.init({
-    apiKey: "AIzaSyAphI5rjr4HOM7c3tYupq2k4fpvktBdWtU",
-    discoveryDocs: ["https://sheets.googleapis.com/$discovery/rest?version=v4"]
-  }).then(() => {
-    gapi.client.sheets.spreadsheets.values.append({
-      spreadsheetId: "18JThLkbC4VrpeL-oBk28YZsHyshnpk-t610fo6n4oyI",
-      range: "Sheet1",
-      valueInputOption: "RAW",
-      insertDataOption: "INSERT_ROWS",
-      resource: {
-        values: [[question, answer1, answer2, answer3, correctAnswer]]
-      }
-    }).then(() => {
-      console.log("Data written to sheet successfully");
-    });
+fetch(sheet_csv)
+  .then(function(response){return response.text();})
+  .then(function(data){
+    parseData(data)
   });
-});
+
+//parse the data
+var parseData = function(data){
+  var gson = Papa.parse(data, {header:true}).data;
+  renderData(gson);
+};
+
+var renderData = function(gson) {
+  for(var i=0; i<gson.length; i++) {
+    var row_data = gson[i];
+    var row_html = ${row_data["formResponse"]};
+console.log(row_html);
+  }
+}
