@@ -24,6 +24,7 @@ const extractValue = (string, key) => {
 };
 
 var renderData = function(gson) {
+  console.log(gson.length);
   let check = false;
   for(var i=0; i<gson.length; i++) {
     var row_data = gson[i];
