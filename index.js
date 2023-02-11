@@ -28,8 +28,8 @@ var renderData = function(gson) {
   let check = false;
   for(var i=0; i<gson.length; i++) {
     var row_data = gson[i];
-    console.log(row_data);
     var row_html = row_data["formResponse"];
+    console.log(row_html);
     var path = extractValue(row_html, "path");
     var question = extractValue(row_html, "question");
     var answer1 = extractValue(row_html, "answer1");
