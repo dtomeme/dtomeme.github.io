@@ -24,6 +24,7 @@ function extractValue(string, key) {
 };
 
 var renderData = function(gson) {
+  const url = window.location.href;
   let check = false;
   for(var i=0; i<gson.length; i++) {
     var row_data = gson[i];
@@ -32,7 +33,6 @@ var renderData = function(gson) {
     var path = extractValue(row_html, "path");
     var question = extractValue(row_html, "question");
     var answer1 = extractValue(row_html, "answer1");
-    const url = window.location.href;
     if (url.includes(path)) {
       check = true;
     }
@@ -41,4 +41,8 @@ var renderData = function(gson) {
     console.log("question:", question);
     console.log("answer1:", answer1);
   }
+    console.log("url:", url);
+    console.log("path:", extractValue(gson[2]["formResponse"], "path"));
+    console.log("question:", extractValue(gson[2]["formResponse"], "question"));
+    console.log("answer1:", extractValue(gson[2]["formResponse"], "answer1"));
 }
