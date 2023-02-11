@@ -24,15 +24,30 @@ const extractValue = (string, key) => {
 };
 
 var renderData = function(gson) {
+  let check = false;
   for(var i=0; i<gson.length; i++) {
     var row_data = gson[i];
     var row_html = row_data["formResponse"];
     const path = extractValue(row_html, "path");
     const question = extractValue(row_html, "question");
     const answer1 = extractValue(row_html, "answer1");
-
+    const url = window.location.href;
+    if (url.includes(path)) {
+      check = true;
+    }
+    console.log("url:", window.url);
     console.log("path:", path);
     console.log("question:", question);
     console.log("answer1:", answer1);
+  }
+  if (check) {
+    var el = document.getElementById('content');
+    var content = "";
+    var fs = require("fs");
+    fs.readFile("./quiz.html", function(text){
+      content += text.replace(/(\r\n|\n|\r)/gm, "");
+    });
+    console.log(content);
+    el.insertAdjacentHTML('afterbegin', content);
   }
 }
