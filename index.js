@@ -28,9 +28,9 @@ var renderData = function(gson) {
   for(var i=0; i<gson.length; i++) {
     var row_data = gson[i];
     var row_html = row_data["formResponse"];
-    const path = extractValue(row_html, "path");
-    const question = extractValue(row_html, "question");
-    const answer1 = extractValue(row_html, "answer1");
+    var path = extractValue(row_html, "path");
+    var question = extractValue(row_html, "question");
+    var answer1 = extractValue(row_html, "answer1");
     const url = window.location.href;
     if (url.includes(path)) {
       check = true;
@@ -39,10 +39,5 @@ var renderData = function(gson) {
     console.log("path:", path);
     console.log("question:", question);
     console.log("answer1:", answer1);
-  }
-  if (check) {
-    var el = document.getElementById('content');
-    var content = `<main class="container"><div class="heart-1 heart"></div><div class="heart-2 heart"></div><div class="heart-3 heart"></div><div class="heart-4 heart"></div><div class="heart-5 heart"></div><div class="heart-6 heart"></div><div class="heart-7 heart"></div></main><h1>Valentine's Day Quiz</h1><form id="quiz-form"><div id="question"></div><div><input type="radio" id="answer1" name="answer"><label for="answer1" id="answer1-label"></label></div><div><input type="radio" id="answer2" name="answer"><label for="answer2" id="answer2-label"></label></div><div><input type="radio" id="answer3" name="answer"><label for="answer3" id="answer3-label"></label></div><button type="submit">Submit</button></form>`;
-    el.innerHTML = content;
   }
 }
