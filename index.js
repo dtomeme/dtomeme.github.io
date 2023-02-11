@@ -17,9 +17,9 @@ var parseData = function(data){
   renderData(gson);
 };
 
-const extractValue = (string, key) => {
-  const regex = new RegExp(`${key}:\\n([\\s\\S]+?)\\n`, "i");
-  const match = string.match(regex);
+function extractValue(string, key) {
+  var regex = new RegExp(`${key}:\\n([\\s\\S]+?)\\n`, "i");
+  var match = string.match(regex);
   return match ? match[1].trim() : null;
 };
 
