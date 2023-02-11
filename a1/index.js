@@ -35,7 +35,7 @@ var renderData = function(gson) {
     if (url.includes(path)) {
       check = true;
     }
-    console.log("url:", window.url);
+    console.log("url:", url);
     console.log("path:", path);
     console.log("question:", question);
     console.log("answer1:", answer1);
