@@ -24,10 +24,10 @@ const extractValue = (string, key) => {
 };
 
 var renderData = function(gson) {
-  console.log(gson.length);
   let check = false;
   for(var i=0; i<gson.length; i++) {
     var row_data = gson[i];
+    console.log(row_data);
     var row_html = row_data["formResponse"];
     var path = extractValue(row_html, "path");
     var question = extractValue(row_html, "question");
