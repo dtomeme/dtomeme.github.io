@@ -29,13 +29,13 @@ var renderData = function(gson) {
   for(var i=0; i<gson.length; i++) {
     let row_data = gson[i];
     let row_html = row_data["formResponse"];
-    console.log(row_html);
+    console.log(i + ": " + row_html);
     let path = extractValue(row_html, "path");
     let question = extractValue(row_html, "question");
     let answer1 = extractValue(row_html, "answer1");
-    if (url.includes(path)) {
+    /*if (url.includes(path)) {
       check = true;
-    }
+    }*/
     console.log("url:", url);
     console.log("path:", path);
     console.log("question:", question);
