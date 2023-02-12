@@ -17,32 +17,46 @@ var parseData = function(data){
   renderData(gson);
 };
 
-const extractValue = (string, key) => {
-  const regex = new RegExp(`${key}:\\n([\\s\\S]+?)\\n`, "i");
-  const match = string.match(regex);
+function extractValue(string, key) {
+  var regex = new RegExp(`${key}:\\n([\\s\\S]+?)\\n`, "i");
+  var match = string.match(regex);
   return match ? match[1].trim() : null;
 };
 
 var renderData = function(gson) {
   let check = false;
+  let path = "";
+  let question = "";
+  let answer1 = "";
+  let answer2 = "";
+  let answer3 = "";
+  let correctAnswer = "";
+  let mess = "";
+  let picture = "";
+  const url = window.location.href;
   for(var i=0; i<gson.length; i++) {
     var row_data = gson[i];
     var row_html = row_data["formResponse"];
-    const path = extractValue(row_html, "path");
-    const question = extractValue(row_html, "question");
-    const answer1 = extractValue(row_html, "answer1");
-    const url = window.location.href;
+    path = extractValue(row_html, "path");
+    question = extractValue(row_html, "question");
+    mess = extractValue(row_html, "mess");
+    picture = extractValue(row_html, "picture");
+    answer1 = extractValue(row_html, "answer1");
+    answer2 = extractValue(row_html, "answer2");
+    answer3 = extractValue(row_html, "answer3");
+    correctAnswer = extractValue(row_html, "correctAnswer");
     if (url.includes(path)) {
-      check = true;
+      var el = document.getElementById('content');
+      var content = `<main class="container"><div class="heart-1 heart"></div><div class="heart-2 heart"></div><div class="heart-3 heart"></div><div class="heart-4 heart"></div><div class="heart-5 heart"></div><div class="heart-6 heart"></div><div class="heart-7 heart"></div></main><h1>Valentine's Day Quiz</h1><form id="quiz-form"><div id="question"></div><div><input type="radio" id="answer1" name="answer"><label for="answer1" id="answer1-label"></label></div><div><input type="radio" id="answer2" name="answer"><label for="answer2" id="answer2-label"></label></div><div><input type="radio" id="answer3" name="answer"><label for="answer3" id="answer3-label"></label></div><button type="submit">Submit</button></form>`;
+      el.innerHTML = content;
+      document.getElementById('question').innerHTML = question;
+      document.getElementById('answer1').innerHTML = answer1;
+      document.getElementById('answer2').innerHTML = answer2;
+      document.getElementById('answer3').innerHTML = answer3;
     }
     console.log("url:", url);
     console.log("path:", path);
     console.log("question:", question);
     console.log("answer1:", answer1);
-  }
-  if (check) {
-    var el = document.getElementById('content');
-    var content = `<main class="container"><div class="heart-1 heart"></div><div class="heart-2 heart"></div><div class="heart-3 heart"></div><div class="heart-4 heart"></div><div class="heart-5 heart"></div><div class="heart-6 heart"></div><div class="heart-7 heart"></div></main><h1>Valentine's Day Quiz</h1><form id="quiz-form"><div id="question"></div><div><input type="radio" id="answer1" name="answer"><label for="answer1" id="answer1-label"></label></div><div><input type="radio" id="answer2" name="answer"><label for="answer2" id="answer2-label"></label></div><div><input type="radio" id="answer3" name="answer"><label for="answer3" id="answer3-label"></label></div><button type="submit">Submit</button></form>`;
-    el.innerHTML = content;
   }
 }
