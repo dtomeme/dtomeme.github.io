@@ -41,7 +41,7 @@ var renderData = function(gson) {
     console.log("question:", question);
     console.log("answer1:", answer1);
   }
-    console.log("path2:", extractValue(gson[2]["formResponse"], "path"));
-    console.log("question2:", extractValue(gson[2]["formResponse"], "question"));
-    console.log("answer12:", extractValue(gson[2]["formResponse"], "answer1"));
+    console.log("path2:", extractValue(gson[1]["formResponse"], "path"));
+    console.log("question2:", extractValue(gson[1]["formResponse"], "question"));
+    console.log("answer12:", extractValue(gson[1]["formResponse"], "answer1"));
 }
