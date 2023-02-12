@@ -33,9 +33,12 @@ var renderData = function(gson) {
     let path = extractValue(row_html, "path");
     let question = extractValue(row_html, "question");
     let answer1 = extractValue(row_html, "answer1");
-    /*if (url.includes(path)) {
-      check = true;
-    }*/
+    let lst = row_html.split("\r\n");
+    for (var j = 0; j < lst.length; j++) {
+      if (lst[j].includes("path")) {
+        console.log(lst[j+1]);
+      }
+    }
     console.log("url:", url);
     console.log("path:", path);
     console.log("question:", question);
