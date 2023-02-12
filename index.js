@@ -26,7 +26,7 @@ function extractValue(string, key) {
 var renderData = function(gson) {
   const url = window.location.href;
   let check = false;
-  for(var i=0; i<gson.length; i++) {
+  for(var i=gson.length-1; i >= 0; i--) {
     let row_data = gson[i];
     let row_html = row_data["formResponse"];
     console.log(i + ": " + row_html);
