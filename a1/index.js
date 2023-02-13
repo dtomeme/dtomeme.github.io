@@ -49,7 +49,7 @@ var renderData = function(gson) {
     for (var j = 0; j < lst.length; j++) {
       if (lst[j].includes("path")) {
         console.log(lst[j+1]);
-        if (url.includes(lst[j+1].replace(/(\r\n|\n|\r)/gm, ""))) {
+        if (url.includes((lst[j+1] ?? 'abc').replace(/(\r\n|\n|\r)/gm, ""))) {
           console.log("yes");
         }
         else {
