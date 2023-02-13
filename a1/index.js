@@ -45,6 +45,17 @@ var renderData = function(gson) {
     answer2 = extractValue(row_html, "answer2");
     answer3 = extractValue(row_html, "answer3");
     correctAnswer = extractValue(row_html, "correctAnswer");
+    for (var j = 0; j < lst.length; j++) {
+      if (lst[j].includes("path")) {
+        console.log(lst[j+1]);
+        if (url.includes(lst[j+1].replace(/(\r\n|\n|\r)/gm, ""))) {
+          console.log("yes");
+        }
+        else {
+          console.log("no");
+        }
+      }
+    }
     if (url.includes(path)) {
       var el = document.getElementById('content');
       var content = `<main class="container"><div class="heart-1 heart"></div><div class="heart-2 heart"></div><div class="heart-3 heart"></div><div class="heart-4 heart"></div><div class="heart-5 heart"></div><div class="heart-6 heart"></div><div class="heart-7 heart"></div></main><h1>Valentine's Day Quiz</h1><form id="quiz-form"><div id="question"></div><div><input type="radio" id="answer1" name="answer"><label for="answer1" id="answer1-label"></label></div><div><input type="radio" id="answer2" name="answer"><label for="answer2" id="answer2-label"></label></div><div><input type="radio" id="answer3" name="answer"><label for="answer3" id="answer3-label"></label></div><button type="submit">Submit</button></form>`;
