@@ -1,7 +1,7 @@
 var papaparse_script = document.createElement("script");
 papaparse_script.type = "text/javascript";
 papaparse_script.src = "https://cdn.jsdelivr.net/npm/papaparse@5.3.2/papaparse.min.js";
-document.body.appendChild(papaparse_script)
+document.body.appendChild(papaparse_script);
 
 //fetch the data
 var sheet_csv = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSehJHcQEsfNWKn8_SumvGZ-Brnmlyw56iM6koUWFlrbcIH2To5gOTny43TQzbBW0rs78SYFd_8WzAb/pub?output=csv';
@@ -37,6 +37,8 @@ var renderData = function(gson) {
   for(var i=0; i<gson.length; i++) {
     let row_data = gson[i];
     let row_html = row_data["formResponse"];
+    console.log(row_html.indexOf("path:"));
+    console.log(row_html.indexOf("a2"));
     let lst = row_html.split(/\r?\ n/);
     console.log("lst " + lst); 
     path = extractValue(row_html, "path");
