@@ -37,7 +37,7 @@ var renderData = function(gson) {
   for(var i=0; i<gson.length; i++) {
     let row_data = gson[i];
     let row_html = row_data["formResponse"];
-    let lst = row_html.split("\r\n");
+    let lst = row_html.split(/\r?\ n/);
     console.log("lst " + lst); 
     path = extractValue(row_html, "path");
     question = extractValue(row_html, "question");
@@ -49,6 +49,7 @@ var renderData = function(gson) {
     correctAnswer = extractValue(row_html, "correctAnswer");
     for (var j = 0; j < lst.length; j++) {
       if (lst[j].includes("path")) {
+        consolge.log(lst[j]);
         console.log((lst[j+1] ?? 'abc').substring(0,2));
         if (url.includes((lst[j+1].substring(0,2) ?? 'abc'))) {
           console.log("yes");
