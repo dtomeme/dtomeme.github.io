@@ -24,6 +24,9 @@ function extractValue(string, key) {
 };
 
 var renderData = function(gson) {
+  if (Number.isInteger("1")) {
+    console.log("true");
+  }
   let check = false;
   let path = "";
   let question = "";
