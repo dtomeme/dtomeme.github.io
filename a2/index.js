@@ -17,53 +17,36 @@ var parseData = function(data){
   renderData(gson);
 };
 
-function extractValue(string, key) {
-  var regex = new RegExp(`${key}:\\n([\\s\\S]+?)\\n`, "i");
-  var match = string.match(regex);
-  return match ? match[1].trim() : null;
-};
-
 var renderData = function(gson) {
-  let check = false;
-  let path = "";
-  let question = "";
-  let answer1 = "";
-  let answer2 = "";
-  let answer3 = "";
-  let correctAnswer = "";
-  let mess = "";
-  let picture = "";
   const url = window.location.href;
   for(var i=0; i<gson.length; i++) {
+    const vars = ["path","question","mess","picture","answer1","answer2","answer3","correct-answer","Submitted"];
+    let i = 1;
+    let values = new Array(8);
     let row_data = gson[i];
     let row_html = row_data["formResponse"];
-    path = row_html.substring(row_html.indexOf("path:")+7,row_html.indexOf("path:")+9);
-    if (isNaN(path.charAt(0))) {
-      console.log("true");
+    values[0] = row_html.substring(row_html.indexOf(vars[0])+6,row_html.indexOf(vars[0])+8);
+    if (isNaN(values[0].charAt(0))) {
+      i = 0;
     }
-    question = row_html.substring(row_html.indexOf("question:")+11,row_html.indexOf("question:")+13);
-    mess = row_html.substring(row_html.indexOf("mess:")+7,row_html.indexOf("mess:")+9);
-    picture = row_html.substring(row_html.indexOf("picture:")+10,row_html.indexOf("picture:")+12);
-    answer1 = row_html.substring(row_html.indexOf("answer1:")+10,row_html.indexOf("answer1:")+12);
-    answer2 = row_html.substring(row_html.indexOf("answer2:")+10,row_html.indexOf("answer2:")+12);
-    answer3 = row_html.substring(row_html.indexOf("answer3:")+10,row_html.indexOf("answer3:")+12);
-    correctAnswer = row_html.substring(row_html.indexOf("correctAnswer:")+16,row_html.indexOf("correctAnswer:")+18);
-    console.log(path);
-    console.log(answer1);
-    console.log(picture);
-    console.log(correctAnswer);
+    for (var j = 0; j < 8; j++) {
+      if (j == 7) {
+        i = i + 2;
+      }
+      values[j] = row_html.substring(row_html.indexOf(vars[j])+vars[j].length+2+i,row_html.indexOf(vars[j+1])-i-1);
+    }
     if (url.includes(path)) {
       var el = document.getElementById('content');
       var content = `<main class="container"><div class="heart-1 heart"></div><div class="heart-2 heart"></div><div class="heart-3 heart"></div><div class="heart-4 heart"></div><div class="heart-5 heart"></div><div class="heart-6 heart"></div><div class="heart-7 heart"></div></main><h1>Valentine's Day Quiz</h1><form id="quiz-form"><div id="question"></div><div><input type="radio" id="answer1" name="answer"><label for="answer1" id="answer1-label"></label></div><div><input type="radio" id="answer2" name="answer"><label for="answer2" id="answer2-label"></label></div><div><input type="radio" id="answer3" name="answer"><label for="answer3" id="answer3-label"></label></div><button type="submit">Submit</button></form>`;
       el.innerHTML = content;
-      document.getElementById('question').innerHTML = question;
-      document.getElementById('answer1').innerHTML = answer1;
-      document.getElementById('answer2').innerHTML = answer2;
-      document.getElementById('answer3').innerHTML = answer3;
+      document.getElementById('question').innerHTML = values[1];
+      document.getElementById('answer1').innerHTML = values[2];
+      document.getElementById('answer2').innerHTML = values[3];
+      document.getElementById('answer3').innerHTML = values[4];
     }
     console.log("url:", url);
-    console.log("path:", path);
-    console.log("question:", question);
-    console.log("answer1:", answer1);
+    console.log(values[0]);
+    console.log(values[1]);
+    console.log(values[7]);
   }
 }
