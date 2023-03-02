@@ -24,9 +24,6 @@ function extractValue(string, key) {
 };
 
 var renderData = function(gson) {
-  if (Number.isInteger("1")) {
-    console.log("true");
-  }
   let check = false;
   let path = "";
   let question = "";
@@ -41,6 +38,9 @@ var renderData = function(gson) {
     let row_data = gson[i];
     let row_html = row_data["formResponse"];
     path = row_html.substring(row_html.indexOf("path:")+7,row_html.indexOf("path:")+9);
+    if (isNaN(path.charAt(0))) {
+      console.log("true");
+    }
     question = row_html.substring(row_html.indexOf("question:")+11,row_html.indexOf("question:")+13);
     mess = row_html.substring(row_html.indexOf("mess:")+7,row_html.indexOf("mess:")+9);
     picture = row_html.substring(row_html.indexOf("picture:")+10,row_html.indexOf("picture:")+12);
