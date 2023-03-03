@@ -19,11 +19,11 @@ var parseData = function(data){
 
 var renderData = function(gson) {
   const url = window.location.href;
-  for(var i=0; i<gson.length; i++) {
+  for(var k=0; k<gson.length; k++) {
     const vars = ["path","mess","picture","question","answer1","answer2","answer3","correct-answer","Submitted"];
     let i = 1;
     let values = new Array(8);
-    let row_data = gson[i];
+    let row_data = gson[k];
     let row_html = row_data["formResponse"];
     values[0] = row_html.substring(row_html.indexOf(vars[0])+6,row_html.indexOf(vars[0])+8);
     if (isNaN(values[0].charAt(0))) {
