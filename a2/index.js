@@ -25,6 +25,7 @@ var renderData = function(gson) {
     let values = new Array(8);
     let row_data = gson[k];
     let row_html = row_data["formResponse"];
+    console.log(row_html);
     values[0] = row_html.substring(row_html.indexOf(vars[0])+6,row_html.indexOf(vars[0])+8);
     if (isNaN(values[0].charAt(0))) {
       i = 0;
@@ -36,9 +37,9 @@ var renderData = function(gson) {
       values[j] = row_html.substring(row_html.indexOf(vars[j])+vars[j].length+2+i,row_html.indexOf(vars[j+1])-i-3);
     }
     console.log("url:", url);
-    console.log(values[0]);
-    console.log(values[1]);
-    console.log(values[7]);
+    for (var l = 0; l < 8; l++) {
+      console.log(values[l]);
+    }
     if (url.includes(values[0])) {
       var el = document.getElementById('content');
       var content = `<main class="container"><div class="heart-1 heart"></div><div class="heart-2 heart"></div><div class="heart-3 heart"></div><div class="heart-4 heart"></div><div class="heart-5 heart"></div><div class="heart-6 heart"></div><div class="heart-7 heart"></div></main><h1>Valentine's Day Quiz</h1><form id="quiz-form"><div id="question"></div><div><input type="radio" id="answer1" name="answer"><label for="answer1" id="answer1-label"></label></div><div><input type="radio" id="answer2" name="answer"><label for="answer2" id="answer2-label"></label></div><div><input type="radio" id="answer3" name="answer"><label for="answer3" id="answer3-label"></label></div><button type="submit">Submit</button></form>`;
