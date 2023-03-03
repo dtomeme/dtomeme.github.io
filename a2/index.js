@@ -44,6 +44,10 @@ var renderData = function(gson) {
       var el = document.getElementById('content');
       var content = `<main class="container"><div class="heart-1 heart"></div><div class="heart-2 heart"></div><div class="heart-3 heart"></div><div class="heart-4 heart"></div><div class="heart-5 heart"></div><div class="heart-6 heart"></div><div class="heart-7 heart"></div></main><h1>Valentine's Day Quiz</h1><form id="quiz-form"><div id="question"></div><div><input type="radio" id="answer1" name="answer"><label for="answer1" id="answer1-label"></label></div><div><input type="radio" id="answer2" name="answer"><label for="answer2" id="answer2-label"></label></div><div><input type="radio" id="answer3" name="answer"><label for="answer3" id="answer3-label"></label></div><button type="submit">Submit</button></form>`;
       el.innerHTML = content;
+      console.log("3 " + values[3]);
+      console.log("4 " + values[4]);
+      console.log("5 " + values[5]);
+      console.log("6 " + values[6]);
       document.getElementById('question').innerHTML = "abc?";
       document.getElementById('answer1').innerHTML = values[4];
       document.getElementById('answer2').innerHTML = values[5];
