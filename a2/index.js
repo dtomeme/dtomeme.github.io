@@ -19,6 +19,10 @@ var parseData = function(data){
 
 var renderData = function(gson) {
   const url = window.location.href;
+  let question = "";
+  let answer1 = "";
+  let answer2 = "";
+  let answer3 = "";
   for(var k=0; k<gson.length; k++) {
     const vars = ["path","mess","picture","question","answer1","answer2","answer3","correct-answer","Submitted"];
     let i = 1;
@@ -40,18 +44,19 @@ var renderData = function(gson) {
     for (var l = 0; l < 8; l++) {
       console.log(values[l]);
     }
+    question = values[3];
+    answer1 = values[4];
+    answer2 = values[5];
+    answer3 = values[6];
     if (url.includes(values[0])) {
       var el = document.getElementById('content');
       var content = `<main class="container"><div class="heart-1 heart"></div><div class="heart-2 heart"></div><div class="heart-3 heart"></div><div class="heart-4 heart"></div><div class="heart-5 heart"></div><div class="heart-6 heart"></div><div class="heart-7 heart"></div></main><h1>Valentine's Day Quiz</h1><form id="quiz-form"><div id="question"></div><div><input type="radio" id="answer1" name="answer"><label for="answer1" id="answer1-label"></label></div><div><input type="radio" id="answer2" name="answer"><label for="answer2" id="answer2-label"></label></div><div><input type="radio" id="answer3" name="answer"><label for="answer3" id="answer3-label"></label></div><button type="submit">Submit</button></form>`;
       el.innerHTML = content;
-      console.log("3 " + values[3]);
-      console.log("4 " + values[4]);
-      console.log("5 " + values[5]);
-      console.log("6 " + values[6]);
-      document.getElementById('question').innerHTML = "abc?";
-      document.getElementById('answer1').innerHTML = values[4];
-      document.getElementById('answer2').innerHTML = values[5];
-      document.getElementById('answer3').innerHTML = values[6];
+      console.log("question " + question);
+      document.getElementById('question').innerHTML = question;
+      document.getElementById('answer1').placeholder = answer1;
+      document.getElementById('answer2').placeholder = answer2;
+      document.getElementById('answer3').placeholder = answer3;
     }
   }
 }
