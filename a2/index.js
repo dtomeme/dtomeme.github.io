@@ -33,7 +33,7 @@ var renderData = function(gson) {
       if (j == 7) {
         i = i + 2;
       }
-      values[j] = row_html.substring(row_html.indexOf(vars[j])+vars[j].length+2+i,row_html.indexOf(vars[j+1])-i-1);
+      values[j] = row_html.substring(row_html.indexOf(vars[j])+vars[j].length+2+i,row_html.indexOf(vars[j+1])-i-2);
     }
     console.log("url:", url);
     console.log(values[0]);
