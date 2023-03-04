@@ -50,7 +50,7 @@ var renderData = function(gson) {
     answer1 = values[4];
     answer2 = values[5];
     answer3 = values[6];
-    if (url.includes(values[0])) {
+    if (url.includes(values[0].substring(0,2))) {
       console.log("def");
     }
     else {
