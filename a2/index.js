@@ -44,6 +44,7 @@ var renderData = function(gson) {
     for (var l = 0; l < 8; l++) {
       console.log(values[l]);
     }
+    console.log(typeof values[0]);
     question = values[3];
     answer1 = values[4];
     answer2 = values[5];
