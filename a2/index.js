@@ -50,7 +50,9 @@ var renderData = function(gson) {
     answer3 = values[6];
     console.log("path " + values[0]);
     console.log("question " + question);
+    console.log(typeof question);
     if (url.includes(values[0])) {
+      console.log("abc");
       var el = document.getElementById('content');
       var content = `<main class="container"><div class="heart-1 heart"></div><div class="heart-2 heart"></div><div class="heart-3 heart"></div><div class="heart-4 heart"></div><div class="heart-5 heart"></div><div class="heart-6 heart"></div><div class="heart-7 heart"></div></main><h1>Valentine's Day Quiz</h1><form id="quiz-form"><div id="question">` + question + `</div><div><input type="radio" id="answer1" name="answer" placeholder="` + answer1 + `"><label for="answer1" id="answer1-label"></label></div><div><input type="radio" id="answer2" name="answer" placeholder="` + answer2 + `"><label for="answer2" id="answer2-label"></label></div><div><input type="radio" id="answer3" name="answer" placeholder="`+ answer3 + `"><label for="answer3" id="answer3-label"></label></div><button type="submit">Submit</button></form>`;
       el.innerHTML = content;
