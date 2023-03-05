@@ -1,0 +1,262 @@
+/* General Style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  height: 200px;
+  width: 250px;
+  border: 5px solid #ffffff;
+  position: relative;
+  /* 3D */
+  perspective: 1000px;
+}
+.centered {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  color:white;
+}
+
+img {
+  width: 108%;
+  height: 105%;
+  object-fit: cover;
+}
+
+.door {
+  background-color: #6247aa;
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  /* inner layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#right-door {
+  position: absolute;
+  border-left: 130px solid #815ac0;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  height:0;
+  width:0;
+  top:0;
+  z-index:3;
+  transform-origin:left;
+  transition: transform 0.5s;
+}
+
+#left-door {
+  position: absolute;
+  border-right: 130px solid #815ac0;
+  border-top: 100px solid transparent;
+  border-bottom: 100px solid transparent;
+  height:0;
+  width:0;
+  top:0;
+  z-index:3;
+  left:130px;
+  transform-origin:right;
+  transition: transform 0.5s;
+}
+
+.shape {
+  width: 40px; 
+  height: 40px; 
+  border-right: 40px solid transparent;
+  border-top: solid #ffffff;
+}
+
+.knob {
+  width: 10px;
+  height: 50px;
+  background-color: #D7DADE;
+  position: absolute;
+}
+
+#left-knob {
+  top: 50%;
+  right: 10px;
+}
+
+#right-knob {
+  top: 50%;
+  left: 10px;
+}
+
+/* Door swing effect */
+.wrapper:hover #left-door{
+  transform: rotateY(-140deg);
+}
+
+.wrapper:hover #right-door{
+  transform: rotateY(140deg);
+}
+
+.container {
+  max-width: 600px;
+  max-height: 960px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+#message {
+  position: absolute;
+  display: inline;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3%;
+  color: rgb(41, 41, 41);
+  left: 26%;
+  top: 20%;
+  font-family: "Coming Soon", cursive;
+  font-size: 250%;
+  
+}
+
+#message h1 {
+    text-shadow: 2px 2px #ff0000;
+}
+
+#message p {
+    position: absolute;
+    right: 15%;
+    font-family: 'Great Vibes', cursive;
+    font-size: 150%;
+}
+
+.heart-1 {
+  left: 5%;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+.heart-2 {
+  left: 15%;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+}
+
+.heart-3 {
+  left: 25%;
+  animation-duration: 2.3s;
+  animation-iteration-count: infinite;
+}
+
+.heart-4 {
+  left: 35%;
+  animation-duration: 2.9s;
+  animation-iteration-count: infinite;
+}
+
+.heart-5 {
+  left: 45%;
+  animation-duration: 2.6s;
+  animation-iteration-count: infinite;
+}
+
+.heart-6 {
+  left: 55%;
+  animation-duration: 2.4s;
+  animation-iteration-count: infinite;
+}
+
+.heart-7 {
+  left: 65%;
+  animation-duration: 2.7s;
+  animation-iteration-count: infinite;
+}
+
+.heart {
+  position: relative;
+  display: inline-block;
+  background-color: pink;
+  height: 50px;
+  width: 50px;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  animation-name: drop;
+  animation-timing-function: ease-in;
+}
+.heart::after {
+  background-color: pink;
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 0px;
+  left: 25px;
+}
+.heart::before {
+  content: "";
+  background-color: pink;
+  border-radius: 50%;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 0px;
+}
+
+@keyframes drop {
+  0% {
+    top: -55px;
+  }
+  100% {
+    top: 900px;
+    opacity: 0.2;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  body {
+    max-width: 60%;
+  }
+
+  #message {
+    left: 5%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  #message {
+    padding: 0;
+    font-size: 150%;
+  }
+  #message p {
+    right: 5%;
+}
+  .heart {
+    height: 25px;
+    width: 25px;
+  }
+  .heart::after {
+    width: 25px;
+    height: 25px;
+    left: 12.5px;
+  }
+  .heart::before {
+    width: 25px;
+    height: 25px;
+    top: -12.5px;
+  }
+}
