@@ -72,7 +72,32 @@ var renderData = function(gson) {
 function checkSelect() {
   for (var a = 1; a < 4; a++) {
         if (document.getElementById("answer"+a).checked && document.getElementById("correct-answer").value == ""+a) {
-            
+            var mess = document.getElementById('mess').value;
+            var picture = document.getElementById('picture').value;
+            var el = document.getElementById('content');
+            var content = `<main class="container">
+      <div class="heart-1 heart"></div>
+      <div class="heart-2 heart"></div>
+      <div class="heart-3 heart"></div>
+      <div class="heart-4 heart"></div>
+    </main>
+    <div class="wrapper">
+      <div class="centered">` + mess + `</div>
+      <img src="` + picture + `"
+      <div id="left-door" class="door">
+      </div>
+      <div id="right-door" class="door">
+      </div>
+    </div>
+  <main class="container">
+      <div class="heart-1 heart"></div>
+      <div class="heart-2 heart"></div>
+      <div class="heart-3 heart"></div>
+      <div class="heart-4 heart"></div>
+    </main>`;
+            el.innerHTML = content;
+            var theme = document.getElementsByTagName('link')[0];
+            theme.setAttribute('href', 'style2.css');
         }
   }
 }
