@@ -53,6 +53,7 @@ var renderData = function(gson) {
       console.log(values[l]);
     }
     path = values[0].substring(0,2);
+    console.log("path " + path); 
     mess = values[1];
     picture = values[2];
     question = values[3];
