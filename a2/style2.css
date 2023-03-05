@@ -59,6 +59,7 @@ img {
   z-index:3;
   transform-origin:left;
   transition: transform 0.5s;
+  top: 260px;
 }
 
 #left-door {
