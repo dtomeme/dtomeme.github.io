@@ -85,7 +85,7 @@ function checkSelect() {
     </main>
     <div class="wrapper">
       <div class="centered">` + mess + `</div>
-      <img src="` + picture + `"
+      <img src="` + picture + `"/>
       <div id="left-door" class="door">
       </div>
       <div id="right-door" class="door">
