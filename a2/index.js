@@ -42,7 +42,7 @@ var renderData = function(gson) {
     }
     for (var j = 0; j < 8; j++) {
       if (j == 7) {
-        values[j] = row_html.substring(row_html.indexOf(vars[j])+vars[j].length+2+i,row_html.indexOf(vars[j])+vars[j].length+5+i);
+        values[j] = row_html.substring(row_html.indexOf(vars[j])+vars[j].length+2+i,row_html.indexOf(vars[j])+vars[j].length+3+i);
       }
       else {
         values[j] = row_html.substring(row_html.indexOf(vars[j])+vars[j].length+2+i,row_html.indexOf(vars[j+1])-i-3);
